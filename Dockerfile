@@ -8,7 +8,8 @@ RUN echo "ALL ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 RUN apt-get update
 
 # Install tools
-RUN apt-get install -y yq
+RUN apt-get install wget -y
+RUN wget https://github.com/mikefarah/yq/releases/download/v4.12.2/yq_linux_amd64.tar.gz -O - |  tar xz && mv yq_linux_amd64 /usr/bin/yq
 
 # Install sqitch
 RUN apt-get install -y libdbd-mysql-perl mysql-client build-essential perl perl-doc \
